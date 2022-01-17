@@ -21,8 +21,6 @@ jobs:
       with:
         path: $GITHUB_WORKSPACE/server
 
-    - run: ls
-
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
