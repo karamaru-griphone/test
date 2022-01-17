@@ -19,11 +19,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        path: server
+        path: $GITHUB_WORKSPACE/server
 
-    - run: echo ${GITHUB_WORKSPACE}
-
-    - run: echo $GITHUB_WORKSPACE
+    - run: ls
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
