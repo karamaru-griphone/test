@@ -18,6 +18,9 @@ jobs:
       with:
         path: ./server
 
+    - name: Run ls
+      run: ls
+
     - name: Set up Go 1.17
       uses: actions/setup-go@v2
       with:
