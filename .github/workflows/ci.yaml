@@ -32,4 +32,6 @@ jobs:
         working-directory: server
 
     - name: Run go test
-      run: go test server
+      run: |
+        cd server
+        go test ./...
