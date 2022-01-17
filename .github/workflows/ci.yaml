@@ -16,19 +16,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Run ls
-      run: ls
-
-    - name: Set up Go 1.17
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.17
-
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
-        args: --enable=gosec,prealloc,gocognit
-        skip-go-installation: true
         working-directory: server
 
     - name: Run go test
