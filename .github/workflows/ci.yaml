@@ -19,12 +19,14 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
       with:
-        path: ./server
+        path: server
+
+    - run: ls
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
-      # with:
-      #   working-directory: server
+      with:
+        working-directory: server
 
     - name: Run go test
       run: go test ./...
