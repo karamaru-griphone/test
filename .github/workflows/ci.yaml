@@ -15,8 +15,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-      with:
-        path: ./server
 
     - name: Run ls
       run: ls
@@ -32,3 +30,6 @@ jobs:
         args: --enable=gosec,prealloc,gocognit
         skip-go-installation: true
         working-directory: server
+
+    - name: Run go test
+      run: go test server
