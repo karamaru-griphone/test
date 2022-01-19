@@ -2,10 +2,9 @@ package main
 
 import (
 	"fmt"
-
-	"github.com/google/uuid"
+	"test/pkg"
 )
 
 func main() {
-	fmt.Print(uuid.NewRandom())
+	fmt.Println(pkg.Hoge())
 }
