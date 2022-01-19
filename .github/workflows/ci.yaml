@@ -12,17 +12,40 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Set up Go 1.17
+    - name: Setup Go 1.17
       uses: actions/setup-go@v2
       with:
         go-version: 1.17
 
+    - name: Cache modules
+      uses: actions/cache@v2
+      id: cache-go
+      with:
+        path: |
+          ~/.cache/go-build
+          ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
+
+    - name: after cache
+      run: |
+        echo "-->${{steps.cache-go.outputs.cache-hit}}<--"
+
+    - name: Run go test
+      run: go test ./...
+
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
-        version: latest
+        working-directory: server
         skip-go-installation: true
+        skip-pkg-cache: true
+        skip-build-cache: true
