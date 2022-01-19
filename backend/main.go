@@ -6,5 +6,6 @@ import (
 )
 
 func main() {
-	fmt.Println(pkg.Hoge())
+	uuid, _ := pkg.Hoge()
+	fmt.Println(uuid, "a")
 }
