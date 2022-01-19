@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: server
+        working-directory: backend
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -39,13 +39,14 @@ jobs:
       run: |
         echo "-->${{steps.cache-go.outputs.cache-hit}}<--"
 
+    - name: Run go build
+      run: go build ./...
+
     - name: Run go test
       run: go test ./...
 
     - name: Run golangci-lint
       uses: golangci/golangci-lint-action@v2
       with:
-        working-directory: server
+        working-directory: backend
         skip-go-installation: true
-        skip-pkg-cache: true
-        skip-build-cache: true
