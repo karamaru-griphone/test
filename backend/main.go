@@ -6,5 +6,5 @@ import (
 )
 
 func main() {
-	fmt.Println(pkg.Hoge())
+	fmt.Println(pkg.Hoge(), "a")
 }
