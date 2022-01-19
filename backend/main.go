@@ -7,5 +7,5 @@ import (
 
 func main() {
 	uuid, _ := pkg.Hoge()
-	fmt.Println(uuid, "b")
+	fmt.Println(uuid, "c")
 }
